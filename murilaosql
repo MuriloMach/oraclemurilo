@@ -1,0 +1,28 @@
+create table PAIS (ID_PAIS number primary key,
+                NOME varchar2(30));
+
+create table ESTADO (ID_ESTADO number primary key,
+                    NOME varchar2(30),
+                    ID_PAIS number);
+                    
+
+create table CIDADE (ID_CIDADE number primary key,
+                    NOME varchar2(30),
+                    ID_ESTADO number);
+
+create table BAIRRO (ID_BAIRRO number primary key,
+                    NOME varchar2(30),
+                    ID_CIDADE number);
+                    
+create table ENDERECO_CLIENTE (ID_END_CLIE number primary key,
+                            NOME varchar2(30));
+
+alter table ESTADO add constraint FK_ESTADO foreign key (ID_PAIS)
+references PAIS(ID_PAIS);
+
+
+alter table CIDADE add constraint FK_CIDADE foreign key (ID_ESTADO)
+references ESTADO (ID_ESTADO);
+
+
+alter table                 
